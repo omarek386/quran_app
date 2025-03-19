@@ -4,21 +4,18 @@ import 'package:quran_app/core/themes/app_color.dart';
 
 import 'star_shap.dart';
 
-class SurahCard extends StatelessWidget {
+class DoaCard extends StatelessWidget {
   final int number;
   final String nameEnglish;
-  final String nameArabic;
   final String revelationType;
-  final int ayatCount;
   final Color? accentColor;
 
-  const SurahCard({
+  const DoaCard({
     super.key,
     required this.number,
     required this.nameEnglish,
-    required this.nameArabic,
     required this.revelationType,
-    required this.ayatCount,
+
     this.accentColor,
   });
 
@@ -68,17 +65,20 @@ class SurahCard extends StatelessWidget {
                       Text(
                         nameEnglish,
                         style: TextStyle(
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.normal,
                         ),
                       ),
-                      SizedBox(height: 4.h), // Space between title and subtitle
+                      Text(
+                        'Doa',
+                        style: TextStyle(fontSize: 15.sp, color: color),
+                      ),
                       Row(
                         children: [
                           Text(
                             revelationType.toUpperCase(),
                             style: TextStyle(
-                              fontSize: 14.sp,
+                              fontSize: 10.sp,
                               color: Colors.grey[600],
                             ),
                           ),
@@ -90,13 +90,6 @@ class SurahCard extends StatelessWidget {
                               color: Colors.grey[600],
                             ),
                           ),
-                          Text(
-                            '$ayatCount AYAT',
-                            style: TextStyle(
-                              fontSize: 14.sp,
-                              color: Colors.grey[600],
-                            ),
-                          ),
                         ],
                       ),
                     ],
@@ -104,14 +97,6 @@ class SurahCard extends StatelessWidget {
                 ),
 
                 // Right Side: Arabic Text
-                Text(
-                  nameArabic,
-                  style: TextStyle(
-                    fontSize: 20.sp,
-                    color: color,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
               ],
             ),
           ),
