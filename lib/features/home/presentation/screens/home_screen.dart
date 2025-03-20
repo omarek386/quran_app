@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:quran_app/features/home/presentation/widgets/doa_widget.dart';
 import 'package:quran_app/features/home/presentation/widgets/select_boutton.dart';
-import 'package:quran_app/features/home/presentation/widgets/surah_card.dart';
 import 'package:quran_app/features/home/presentation/widgets/title_box_widget.dart';
 
-import '../../../../core/themes/app_color.dart';
+import '../cubit/home_cubit.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -26,18 +25,12 @@ class HomeScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w700),
               ),
               SelectButton(),
-              SurahCard(
-                number: 1,
-                nameEnglish: 'Al-Fatiha',
-                nameArabic: 'الفاتحة',
-                revelationType: 'Meccan',
-                ayatCount: 7,
-              ),
-              DoaCard(
-                number: 1,
-                nameEnglish: 'nameEnglish',
-                revelationType: 'revelationType',
-                accentColor: AppColor.primary,
+              SizedBox(height: 20.h),
+              TextButton(
+                onPressed: () async {
+                  await context.read<HomeCubit>().getSwarData();
+                },
+                child: const Text('Click Me'),
               ),
             ],
           ),

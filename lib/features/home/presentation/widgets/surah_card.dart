@@ -41,8 +41,9 @@ class SurahCard extends StatelessWidget {
         ),
         Expanded(
           child: Container(
+            height: 68.h, // Adjust the hieght
             margin: EdgeInsets.only(right: 13.w),
-            padding: EdgeInsets.all(16.r),
+            padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(16.r),
@@ -58,7 +59,7 @@ class SurahCard extends StatelessWidget {
             child: Row(
               children: [
                 SizedBox(width: 16.w), // Space between bar and star
-                StarWithNumber(number: number, starColor: color),
+                StarWithNumber(number: number, starColor: color, size: 36.r),
                 SizedBox(width: 16.w), // Space between star and text
                 // Middle: Surah Information
                 Expanded(
@@ -68,8 +69,8 @@ class SurahCard extends StatelessWidget {
                       Text(
                         nameEnglish,
                         style: TextStyle(
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.normal,
                         ),
                       ),
                       SizedBox(height: 4.h), // Space between title and subtitle
@@ -78,7 +79,7 @@ class SurahCard extends StatelessWidget {
                           Text(
                             revelationType.toUpperCase(),
                             style: TextStyle(
-                              fontSize: 14.sp,
+                              fontSize: 12.sp,
                               color: Colors.grey[600],
                             ),
                           ),
@@ -93,7 +94,7 @@ class SurahCard extends StatelessWidget {
                           Text(
                             '$ayatCount AYAT',
                             style: TextStyle(
-                              fontSize: 14.sp,
+                              fontSize: 12.sp,
                               color: Colors.grey[600],
                             ),
                           ),

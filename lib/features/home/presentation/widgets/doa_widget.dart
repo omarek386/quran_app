@@ -38,8 +38,9 @@ class DoaCard extends StatelessWidget {
         ),
         Expanded(
           child: Container(
+            height: 85.h,
             margin: EdgeInsets.only(right: 13.w),
-            padding: EdgeInsets.all(16.r),
+            padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(16.r),
@@ -55,7 +56,7 @@ class DoaCard extends StatelessWidget {
             child: Row(
               children: [
                 SizedBox(width: 16.w), // Space between bar and star
-                StarWithNumber(number: number, starColor: color),
+                StarWithNumber(number: number, starColor: color, size: 36.r),
                 SizedBox(width: 16.w), // Space between star and text
                 // Middle: Surah Information
                 Expanded(
