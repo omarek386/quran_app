@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quran_app/core/router/routes.dart';
 import 'package:quran_app/core/services/API/consumers/dio_consumer.dart';
+import 'package:quran_app/features/home/data/sec_api.dart';
 import 'package:quran_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:quran_app/features/onboarding/presentation/screens/on_boarding_screen.dart';
 
 import '../../features/home/presentation/screens/home_screen.dart';
+import '../../features/surah/presentation/screens/surah_detail_screen.dart';
 
 class AppRouter {
   Route onGenetationRoute(RouteSettings settings) {
@@ -22,6 +24,12 @@ class AppRouter {
         );
       case Routes.onBoarding:
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
+      case Routes.surahDetail:
+        Surah surah = settings.arguments as Surah;
+        return MaterialPageRoute(
+          builder: (_) => SurahDetailScreen(surah: surah),
+        );
+
       default:
         return MaterialPageRoute(
           builder:

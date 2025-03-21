@@ -1,4 +1,3 @@
 class ApiEndpoints {
-  static const String baseUrl = 'https://mp3quran.net/api/v3/';
-  static const String suwar = 'suwar?language=eng';
+  static const String baseUrl = 'https://api.alquran.cloud/v1/quran/ar.alafasy';
 }

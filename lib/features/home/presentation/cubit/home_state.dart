@@ -8,9 +8,9 @@ final class HomeInitial extends HomeState {}
 final class HomeLoading extends HomeState {}
 
 final class HomeLoaded extends HomeState {
-  final List<SuwarModel> swar;
+  final QuranData welcome;
 
-  HomeLoaded(this.swar);
+  HomeLoaded(this.welcome);
 }
 
 final class HomeError extends HomeState {
