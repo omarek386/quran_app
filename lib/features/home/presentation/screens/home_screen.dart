@@ -19,30 +19,35 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.only(left: 20.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TitleBoxWidget(),
-              Text(
-                'Categories',
-                style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w700),
-              ),
-              SelectButton(),
-              SizedBox(height: 20.h),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.only(left: 20.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TitleBoxWidget(),
+                Text(
+                  'Categories',
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                SelectButton(),
+                SizedBox(height: 20.h),
 
-              FutureBuilder(
-                future: BlocProvider.of<HomeCubit>(context).getSwarData(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
-                  } else if (snapshot.hasError) {
-                    log('Error: ${snapshot.error}');
-                    return Center(child: Text('Error: ${snapshot.error}'));
-                  } else if (snapshot.hasData) {
-                    return Expanded(
-                      child: ListView.builder(
+                FutureBuilder(
+                  future: BlocProvider.of<HomeCubit>(context).getSwarData(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(child: CircularProgressIndicator());
+                    } else if (snapshot.hasError) {
+                      log('Error: ${snapshot.error}');
+                      return Center(child: Text('Error: ${snapshot.error}'));
+                    } else if (snapshot.hasData) {
+                      return ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
                         itemCount: snapshot.data!.data.surahs.length,
                         itemBuilder: (context, index) {
                           return GestureDetector(
@@ -72,14 +77,14 @@ class HomeScreen extends StatelessWidget {
                             ),
                           );
                         },
-                      ),
-                    );
-                  } else {
-                    return Center(child: Text('No Data'));
-                  }
-                },
-              ),
-            ],
+                      );
+                    } else {
+                      return Center(child: Text('No Data'));
+                    }
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),

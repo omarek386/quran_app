@@ -15,7 +15,7 @@ class QuranData {
 
   QuranData({required this.code, required this.status, required this.data});
 
-  factory QuranData.fromJson(Map<String, dynamic> json) => QuranData(
+  factory QuranData.fromJson(json) => QuranData(
     code: json["code"],
     status: json["status"],
     data: Data.fromJson(json["data"]),
@@ -34,7 +34,7 @@ class Data {
 
   Data({required this.surahs, required this.edition});
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
+  factory Data.fromJson(json) => Data(
     surahs: List<Surah>.from(json["surahs"].map((x) => Surah.fromJson(x))),
     edition: Edition.fromJson(json["edition"]),
   );
@@ -62,7 +62,7 @@ class Edition {
     required this.type,
   });
 
-  factory Edition.fromJson(Map<String, dynamic> json) => Edition(
+  factory Edition.fromJson(json) => Edition(
     identifier: json["identifier"],
     language: json["language"],
     name: json["name"],
@@ -98,7 +98,7 @@ class Surah {
     required this.ayahs,
   });
 
-  factory Surah.fromJson(Map<String, dynamic> json) => Surah(
+  factory Surah.fromJson(json) => Surah(
     number: json["number"],
     name: json["name"],
     englishName: json["englishName"],
@@ -144,7 +144,7 @@ class Ayah {
     required this.sajda,
   });
 
-  factory Ayah.fromJson(Map<String, dynamic> json) => Ayah(
+  factory Ayah.fromJson(json) => Ayah(
     number: json["number"],
     audio: json["audio"],
     audioSecondary: List<String>.from(json["audioSecondary"].map((x) => x)),
@@ -184,7 +184,7 @@ class SajdaClass {
     required this.obligatory,
   });
 
-  factory SajdaClass.fromJson(Map<String, dynamic> json) => SajdaClass(
+  factory SajdaClass.fromJson(json) => SajdaClass(
     id: json["id"],
     recommended: json["recommended"],
     obligatory: json["obligatory"],

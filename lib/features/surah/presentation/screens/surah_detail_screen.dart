@@ -1,13 +1,30 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quran_app/core/themes/app_color.dart';
 import 'package:quran_app/features/surah/presentation/widget/surah_widget.dart';
+import 'package:quran_app/features/surah/repo/surah_repo.dart';
 
 import '../../../home/data/sec_api.dart';
 
-class SurahDetailScreen extends StatelessWidget {
+class SurahDetailScreen extends StatefulWidget {
   const SurahDetailScreen({super.key, required this.surah});
   final Surah surah;
+
+  @override
+  State<SurahDetailScreen> createState() => _SurahDetailScreenState();
+}
+
+class _SurahDetailScreenState extends State<SurahDetailScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // audioPlayer controller
+    AudioPlayer audioPlayer = SurahRepo().audioPlayer;
+    audioPlayer.onPlayerComplete.listen((event) {
+      audioPlayer.stop();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +42,7 @@ class SurahDetailScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        surah.englishName,
+                        widget.surah.englishName,
                         style: TextStyle(
                           color: AppColor.primary,
                           fontSize: 30.sp,
@@ -33,7 +50,7 @@ class SurahDetailScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        surah.englishNameTranslation,
+                        widget.surah.englishNameTranslation,
                         style: TextStyle(fontSize: 15.sp),
                       ),
                     ],
@@ -43,9 +60,9 @@ class SurahDetailScreen extends StatelessWidget {
                 ListView.builder(
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  itemCount: surah.ayahs.length,
+                  itemCount: widget.surah.ayahs.length,
                   itemBuilder: (context, index) {
-                    return SurahWidget(ayah: surah.ayahs[index]);
+                    return SurahWidget(ayah: widget.surah.ayahs[index]);
                   },
                 ),
               ],
