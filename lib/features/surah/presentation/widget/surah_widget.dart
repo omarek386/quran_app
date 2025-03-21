@@ -59,6 +59,8 @@ class SurahWidget extends StatelessWidget {
           ),
         ),
         SizedBox(height: 20.h),
+        Divider(),
+        SizedBox(height: 10.h),
       ],
     );
   }

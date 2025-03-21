@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quran_app/core/router/routes.dart';
 import 'package:quran_app/core/themes/app_color.dart';
+import 'package:quran_app/features/home/presentation/cubit/home_cubit.dart';
 
-class OnBoardingScreen extends StatelessWidget {
+class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
+
+  @override
+  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
+}
+
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
+  @override
+  void initState() {
+    BlocProvider.of<HomeCubit>(context).getSwarData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

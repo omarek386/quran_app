@@ -23,7 +23,13 @@ class AppRouter {
               ),
         );
       case Routes.onBoarding:
-        return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider(
+                create: (context) => homeCubit,
+                child: const OnBoardingScreen(),
+              ),
+        );
       case Routes.surahDetail:
         Surah surah = settings.arguments as Surah;
         return MaterialPageRoute(
